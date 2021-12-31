@@ -1,0 +1,10 @@
+.idea
+
+.env
+
+app/api/.idea
+app/api/.gitignore
+app/api/alembic/versions
+app/api/apidoc.json
+app/apidoc/
+

@@ -1,0 +1,12 @@
+version: "3"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./docker/flask/Dockerfile
+      args:
+        - APP_ENV=${APP_ENV:-production}
+    ports:
+      - "80:80"
+    env_file:
+      - .env
