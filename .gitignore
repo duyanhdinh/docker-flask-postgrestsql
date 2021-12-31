@@ -2,9 +2,9 @@
 
 .env
 
-app/api/.idea
-app/api/.gitignore
-app/api/alembic/versions
-app/api/apidoc.json
+app/flask/.idea
+app/flask/.gitignore
+app/flask/alembic/versions
+app/flask/apidoc.json
 app/apidoc/
 

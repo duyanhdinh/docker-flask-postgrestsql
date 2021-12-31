@@ -6,4 +6,4 @@ RUN yarn global add apidoc
 
 COPY ./app .
 
-ENTRYPOINT ["apidoc", "-i", "/app/api", "-o"]
+ENTRYPOINT ["apidoc", "-i", "/app/flask", "-o"]
