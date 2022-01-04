@@ -1,5 +1,5 @@
 # Import installed packages
-from flask import Flask
+from flask import Flask, jsonify
 import os
 from app.core import config
 
@@ -68,6 +68,15 @@ def hi():
 def trigger_error():
     division_by_zero = 1 / 1
     return str(division_by_zero)
+
+@app.route('/route-list', methods = ['GET'])
+def list_route():
+    """Print available functions."""
+    func_list = {}
+    for rule in app.url_map.iter_rules():
+        if rule.endpoint != 'static':
+            func_list[rule.rule] = app.view_functions[rule.endpoint].__doc__
+    return jsonify(func_list)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=80)
