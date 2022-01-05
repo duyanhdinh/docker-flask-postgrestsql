@@ -38,7 +38,7 @@ def custom406(error):
     return jsonify({"msg": error.description}), 406
 
 
-# 422 Unprocessable Entity, for flask-apispec, webargs
+# 422 Unprocessable Entity, for webargs
 @app.errorhandler(422)
 def custom422(error):
     return jsonify({"msg": error.description, "errors": error.exc.messages}), 422

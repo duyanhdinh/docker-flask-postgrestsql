@@ -15,11 +15,8 @@ from . import cors  # noqa
 
 from .jwt import jwt  # noqa
 from . import errors  # noqa
-#
-# from ..api.api_v1 import api as api_v1  # noqa
 
-# Create secret key
-app.config["SECRET_KEY"] = config.SECRET_KEY
+from app.api import api  # noqa
 
 # Init Sentry
 sentry_sdk.init(

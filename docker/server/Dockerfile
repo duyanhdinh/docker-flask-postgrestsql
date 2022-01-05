@@ -17,7 +17,7 @@ EXPOSE 8888
 RUN pip install --no-cache-dir -r requirements.txt
 
 # For prod:
-# COPY /app/api /app
+# COPY /app/flask /app
 
 COPY /docker/nginx/conf /etc/nginx/conf.d/
 EXPOSE 5000
