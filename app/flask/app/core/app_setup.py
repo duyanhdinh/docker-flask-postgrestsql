@@ -18,9 +18,6 @@ from . import errors  # noqa
 
 from app.api import api  # noqa
 
-# Create secret key
-app.config["SECRET_KEY"] = config.SECRET_KEY
-
 # Init Sentry
 sentry_sdk.init(
     dsn=config.SENTRY_DSN,

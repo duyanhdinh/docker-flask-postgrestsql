@@ -18,7 +18,7 @@ class User(DeletedMixin, Base):
     email = Column(String, unique=True, index=True)
     username = Column(String, unique=True, index=True)
     password = Column(String)
-    is_active = Column(Boolean(), default=False)
+    is_verified = Column(Boolean(), default=False)
     # Relationships
     roles = relationship("Role", secondary=users_roles, back_populates="users")
     # socials = relationship('Social', backref='users', lazy=True)
