@@ -1,5 +1,5 @@
 # Docker Flask & PostgresSql
-docker for flask postgrestsql base on tiangolo/uwsgi-nginx-flask-docker
+docker for flask postgrestsql base on [tiangolo/full-stack](https://github.com/tiangolo/full-stack)
 
 ## Installation
 
