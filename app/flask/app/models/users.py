@@ -21,6 +21,6 @@ class User(DeletedMixin, Base):
     is_verified = Column(Boolean(), default=False)
     # Relationships
     roles = relationship("Role", secondary=users_roles, back_populates="users")
-    # socials = relationship('Social', backref='users', lazy=True)
-    # profile = relationship('UserProfile', backref='users', lazy=True, uselist=False)
+    # socials = relationship('Social', backref='users', lazy=True, cascade="all, delete, delete-orphan")
+    # profile = relationship('UserProfile', backref='users', lazy=True, uselist=False, cascade="all, delete, delete-orphan")
 
