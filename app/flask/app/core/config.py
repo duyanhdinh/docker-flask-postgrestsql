@@ -4,6 +4,7 @@ import datetime
 
 # app
 SECRET_KEY = os.getenv("SECRET_KEY", default=secrets.token_urlsafe(32))
+TESTING = os.getenv("TESTING", default=False)
 
 # sentry
 SENTRY_DSN = os.getenv("SENTRY_DSN")
@@ -32,7 +33,8 @@ FIRST_SUPERUSER_PASSWORD = os.getenv("FIRST_SUPERUSER_PASSWORD")
 BACKEND_CORS_ORIGINS = os.getenv("BACKEND_CORS_ORIGINS")
 
 # api
-API_V1_URI = "/v1"
+HOST_URL = os.getenv("HOST_URL")
+LATEST_VERSION_API = "v1"
 
 # ReCaptcha
 RECAPTCHA_SECRET_KEY = os.getenv("RECAPTCHA_SECRET_KEY")

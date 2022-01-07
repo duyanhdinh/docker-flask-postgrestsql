@@ -1,5 +1,4 @@
 from app.core import config
-from app.core.security import pwd_context
 
 from app.repository import users as user_rps
 from app.repository import roles as role_rps
@@ -11,7 +10,6 @@ def init_db():
     # Base.metadata.create_all(bind=engine)
 
     role = role_rps.get_by_name(config.SUPERUSER_ROLE)
-    print(role)
     if not role:
         role = role_rps.created(config.SUPERUSER_ROLE)
 

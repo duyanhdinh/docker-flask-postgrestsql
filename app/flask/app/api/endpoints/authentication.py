@@ -1,17 +1,17 @@
 # Import installed packages
-import requests
 from webargs.flaskparser import use_args, use_kwargs
-from flask import jsonify
+from flask import jsonify, Blueprint
 from flask_jwt_extended import jwt_required, create_access_token
 
 # Import app code
-from app.main import app
-from app.helpers.common import uri_api_auth
+from app.helpers.common import true_uri
 from app.repository import users as user_rps
 from app.repository import roles as roles_rps
 from app.repository.users import get_by_email
 from app.schemas.model.user import UserSchema
 from app.schemas.validate.user import RegisterUserSchema, LoginUserSchema
+
+auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 """
     @api {post} /auth/register Register an user
@@ -44,7 +44,7 @@ from app.schemas.validate.user import RegisterUserSchema, LoginUserSchema
           "msg": "The request was well-formed but was unable to be followed due to semantic errors."
         }
 """
-@app.route(uri_api_auth('register'), methods=["POST"])
+@auth.route(true_uri('register'), methods=["POST"])
 @use_args(RegisterUserSchema())
 def register(args):
     """Register new account functions."""
@@ -91,7 +91,7 @@ def register(args):
           "msg": "The request was well-formed but was unable to be followed due to semantic errors."
         }
 """
-@app.route(uri_api_auth('login'), methods=["POST"])
+@auth.route(true_uri('login'), methods=["POST"])
 @use_args(LoginUserSchema())
 def login(args):
     """Login user functions."""

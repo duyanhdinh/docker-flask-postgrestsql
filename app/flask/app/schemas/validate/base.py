@@ -6,17 +6,19 @@ from marshmallow import Schema, fields, validates, ValidationError
 
 
 # Import app code
+from app.core import config
 from app.core.config import RECAPTCHA_SECRET_KEY, RECAPTCHA_SITE_VERIFY
 
 
 class BaseValidateSchema(Schema):
     token = fields.Str(required=True)
 
-    # @validates("token")
-    # def validate_captcha(self, value, **kwargs):
-    #     r = requests.post(RECAPTCHA_SITE_VERIFY, data={'secret': RECAPTCHA_SECRET_KEY, 'response': value})
-    #     if not r.json()['success']:
-    #         raise ValidationError('captcha')
+    if not config.TESTING:
+        @validates("token")
+        def validate_captcha(self, value, **kwargs):
+            r = requests.post(RECAPTCHA_SITE_VERIFY, data={'secret': RECAPTCHA_SECRET_KEY, 'response': value})
+            if not r.json()['success']:
+                raise ValidationError('captcha')
 
 
 error_messages = {'required': 'required'}
